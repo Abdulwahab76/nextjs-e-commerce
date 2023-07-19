@@ -14,7 +14,8 @@ module.exports = {
       },
       colors: {
         'primary-orange': '#FF5722',
-        'primary-hover': '#f38d21'
+        'primary-hover': '#f38d21',
+        'gray-rgb': 'rgba(129, 129, 129, .15)'
       },
 
       animation: {
