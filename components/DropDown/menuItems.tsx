@@ -46,7 +46,7 @@ const MenuItems = ({ items, depthLevel }: { items: any; depthLevel: any }) => {
             {items.url && items.submenu ? (
                 <>
                     <button
-                        className={` !text-lg hover:!underline  !w-[300px]  !font-normal  flex gap-1 ${items.title === 'Browse Category' && '!py-4 !px-5  !text-xl !text-white !bg-black  uppercase text-center justify-center'} `}
+                        className={` !text-lg hover:!underline justify-between !w-[300px]  !font-normal  flex gap-1 ${items.title === 'Browse Category' && '!py-4 !px-5  !text-xl !text-white !bg-black  uppercase text-center justify-center'} `}
                         type="button"
                         aria-haspopup="menu"
                         aria-expanded={dropdown ? "true" : "false"}
