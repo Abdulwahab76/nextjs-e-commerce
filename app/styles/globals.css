@@ -134,16 +134,16 @@ button span {
 }
 
 .dropdown {
-    @apply absolute right-0 left-0 border border-gray-200 text-xs z-50 min-w-[10rem] py-2 list-none bg-white hidden
+    @apply absolute right-0 left-0 border border-gray-200 text-xs z-50 min-w-[10rem] py-2 list-none bg-white !hidden
 }
 
 .dropdown.show {
-    display: block !important;
+    @apply !block p-0
 }
 
 .dropdown .dropdown-submenu {
 
-    @apply absolute -left-full top-[6px] text-black
+    @apply absolute left-full top-[6px] text-black
 }
 
 .dropdown>.menu-items {
@@ -152,11 +152,8 @@ button span {
 }
 
 .dropdown .dropdown-submenu>.menu-items {
-    border-bottom: 1px solid rgba(129, 129, 129, .15);
-    padding: 10px 0px;
-    display: flex;
-    align-items: center;
 
+    @apply border-b border-gray-rgb py-[10px] flex items-center
 }
 
 .dropdown .dropdown-submenu>.menu-items:hover {
@@ -174,22 +171,7 @@ button span {
     color: black;
 }
 
-/* content */
 
-.content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 3rem 20px;
-}
-
-.content h2 {
-    margin-bottom: 1rem;
-}
-
-.content a {
-    color: black;
-    margin-right: 10px;
-}
 
 
 /* header */
