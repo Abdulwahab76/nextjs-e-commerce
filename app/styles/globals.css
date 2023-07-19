@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* header */
+.upper_nav {
+    @apply bg-black flex px-12 items-center leading-[45px];
+}
+
+.upper_nav>div {
+    @apply flex-1 w-6/12 overflow-hidden my-auto;
+}
+
+.upper_nav>.social_icons {
+    @apply flex-1 justify-end flex items-center text-white;
+}
+
+.navbar {
+    @apply flex px-12 border py-5 border-b border-gray-300 justify-between items-center;
+}
+
+.lower_nav {
+    @apply flex px-12 border h-16 border-b border-t-0 border-gray-300 items-center justify-between
+}
+
+.lower_nav .dropdown-menu {
+    @apply h-16 flex items-center bg-black text-white p-7 pl-7 gap-7
+}
+
+.lower_nav ul {
+    @apply flex gap-4 items-center
+}
+
+.lower_nav li {
+    @apply font-medium uppercase
+}
+
+.lower_nav li:hover {
+    @apply text-primary-hover cursor-pointer
+}
+
+
+/* .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: 63px;
+    width: 100%;
+    min-width: 160px;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+} */
+
+
+
+.menus {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.menu-items {
+    position: relative;
+    font-size: 14px;
+}
+
+.menu-items a:not(:first-child) {
+
+    color: white;
+
+
+}
+
+.menu-items a {
+
+    color: black;
+
+
+}
+
+.menu-items button {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    font-size: inherit;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 100%;
+}
+
+button span {
+    margin-left: 3px;
+}
+
+.menu-items>a,
+.menu-items button {
+    text-align: left;
+    padding: 0.7rem 1rem;
+    /* font-size: 20px; */
+}
+
+
+.arrow::after {
+    content: "";
+    display: inline-block;
+    margin-left: 0.28em;
+    vertical-align: 0.09em;
+    border-top: 0.42em solid;
+    border-right: 0.32em solid transparent;
+    border-left: 0.32em solid transparent;
+}
+
+.dropdown {
+    @apply absolute right-0 left-0 border border-gray-200 text-xs z-50 min-w-[10rem] py-2 list-none bg-white hidden
+}
+
+.dropdown.show {
+    display: block !important;
+}
+
+.dropdown .dropdown-submenu {
+
+    @apply absolute -left-full top-[6px] text-black
+}
+
+.dropdown>.menu-items {
+
+    @apply h-10 w-full flex
+}
+
+.dropdown .dropdown-submenu>.menu-items {
+    border-bottom: 1px solid rgba(129, 129, 129, .15);
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+
+}
+
+.dropdown .dropdown-submenu>.menu-items:hover {
+    background-color: rgba(247, 247, 247, 0.414);
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+
+.dropdown .dropdown-submenu>.menu-items:last-child {
+    border: none;
+}
+
+.dropdown .dropdown-submenu .menu-items>button {
+    padding: 0px 16px;
+    color: black;
+}
+
+/* content */
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 20px;
+}
+
+.content h2 {
+    margin-bottom: 1rem;
+}
+
+.content a {
+    color: black;
+    margin-right: 10px;
+}
+
+
+/* header */
