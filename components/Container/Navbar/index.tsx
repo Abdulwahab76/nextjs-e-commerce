@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { menuItems } from "utils/menuItem";
 import MenuItems from "@/components/DropDown/menuItems";
+import Sidebar from "@/components/Sidebar";
 
 const Navbar = () => {
   const [isSearchBar, setIsSearchBar] = useState({
@@ -34,7 +35,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col relative">
+      {/* {isSearchBar.isMobile && } */}
+      <Sidebar />
       <div className="upper_nav">
         <div>
           <p className="text-white text-right font-normal animate-marquee whitespace-nowrap">

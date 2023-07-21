@@ -7,6 +7,16 @@ module.exports = {
 
   ],
   theme: {
+    screens: {
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '950px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+    },
     extend: {
       fontFamily: {
         satoshi: ['Satoshi', 'sans-serif'],
