@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Facebook, Whatsapp, Instagram } from "icons/index";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,11 +14,15 @@ import { menuItems } from "utils/menuItem";
 import MenuItems from "@/components/DropDown/menuItems";
 import Sidebar from "@/components/Sidebar";
 
+
 const Navbar = () => {
   const [isSearchBar, setIsSearchBar] = useState({
     isMobile: false,
     isSearchShow: false,
   });
+
+  const [isOpened, setisOpened] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
       setIsSearchBar((prevState) => ({
@@ -33,11 +37,16 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  const handleToggleSidebar = () => {
+    setisOpened((prevIsOpened) => !prevIsOpened); // Toggle the isOpened state on every click
+  };
+
 
   return (
-    <div className="flex flex-col relative">
-      {/* {isSearchBar.isMobile && } */}
-      <Sidebar />
+    <div className="flex flex-col">
+      {isSearchBar.isMobile && isOpened && (
+        <Sidebar isOpened={isOpened} setIsOpened={setisOpened} />
+      )}
       <div className="upper_nav">
         <div>
           <p className="text-white text-right font-normal animate-marquee whitespace-nowrap">
@@ -54,7 +63,6 @@ const Navbar = () => {
             <Instagram />
             {/* Whatsapp */}
             <Whatsapp />
-
           </div>
           <p className="font-normal border border-gray-400/50 px-4 border-t-0 border-b-0">
             <a href=""> CONTACT US</a>
@@ -64,9 +72,11 @@ const Navbar = () => {
           </p>
         </div>
       </div>
-      <nav className={`navbar   relative z-10`}>
+      <nav className={`navbar  `}>
         <div className="flex items-center w-8/12   justify-between gap-6">
-          <Bars3Icon className="h-10 w-10 md:hidden  flex font-extrabold" />
+
+          <Bars3Icon onClick={handleToggleSidebar} className="h-10 w-10 md:hidden flex font-extrabold" />
+
           <div>
             <Image
               src="https://www.homazing.pk/images/logo.png"
@@ -130,11 +140,7 @@ const Navbar = () => {
             {menuItems.map((menu, index) => {
               const depthLevel = 0;
               return (
-                <MenuItems
-                  items={menu}
-                  key={index}
-                  depthLevel={depthLevel}
-                />
+                <MenuItems items={menu} key={index} depthLevel={depthLevel} />
               );
             })}
           </ul>

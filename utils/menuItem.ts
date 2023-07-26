@@ -2,7 +2,7 @@ export const menuItems = [
 
     {
         title: 'Browse Category',
-        url: '/services',
+        url: '/',
         submenu: [
             {
                 title: 'web design',
@@ -37,5 +37,8 @@ export const menuItems = [
             },
         ],
     },
-
+    {
+        title: 'Summer Essentiall',
+        url: '/services',
+    }
 ];

@@ -56,7 +56,7 @@ const MenuItems = ({ items, depthLevel }: { items: any; depthLevel: any }) => {
                         {window.innerWidth < 960 && depthLevel === 0 ? (
                             items.title
                         ) : (
-                            <Link href={items.url} className="text-lg p-0    ">{items.title}</Link>
+                            <Link href={items.url} className="text-lg p-0 ">{items.title}</Link>
                         )}
 
                         {depthLevel > 0 && window.innerWidth < 960 ? null : depthLevel >
@@ -91,7 +91,7 @@ const MenuItems = ({ items, depthLevel }: { items: any; depthLevel: any }) => {
                     />
                 </>
             ) : (
-                <Link href={items.url} className="hover:!text-black hover:!underline   ">{items.title}</Link>
+                <Link href={items.url} className="hover:!text-black hover:!underline">{items.title}</Link>
             )}
         </li>
     );
