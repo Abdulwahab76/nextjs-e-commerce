@@ -31,69 +31,45 @@ const MenuItems = ({ items, depthLevel }: { items: any; depthLevel: any }) => {
         window.innerWidth > 960 && setDropdown(true);
     };
 
-    const closeDropdown = () => {
-        dropdown && setDropdown(true);
-    };
+
 
     return (
-        <li
-            className="menu-items"
-            ref={ref}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            onClick={closeDropdown}
-        >
-            {items.url && items.submenu ? (
-                <>
-                    <button
-                        className={` !text-lg hover:!underline justify-between !w-[300px]  !font-normal  flex gap-1 ${items.title === 'Browse Category' && '!py-4 !px-5  !text-xl !text-white !bg-black  uppercase text-center justify-center'} `}
-                        type="button"
-                        aria-haspopup="menu"
-                        aria-expanded={dropdown ? "true" : "false"}
-                        onClick={() => setDropdown((prev) => !prev)}
-                    >
-                        {items.title == 'Browse Category' && <Bars3BottomLeftIcon className="w-8 h-8" />}
-                        {window.innerWidth < 960 && depthLevel === 0 ? (
-                            items.title
-                        ) : (
-                            <Link href={items.url} className="text-lg p-0 ">{items.title}</Link>
-                        )}
+        <>
 
-                        {depthLevel > 0 && window.innerWidth < 960 ? null : depthLevel >
-                            0 && window.innerWidth > 960 ? (
-                            <ChevronRightIcon className="h-5 w-5 text-black" />
-                        ) : (
-                            <ChevronDownIcon className="h-5 w-5" />
-                        )}
-                    </button>
-                    <Dropdown
-                        depthLevel={depthLevel}
-                        submenus={items.submenu}
-                        dropdown={dropdown}
-                    />
-                </>
-            ) : !items.url && items.submenu ? (
-                <>
-                    <button
-                        type="button"
-                        aria-haspopup="menu"
-                        aria-expanded={dropdown ? "true" : "false"}
-                        onClick={() => setDropdown((prev) => !prev)}
+            <li className="menu-items" ref={ref} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+                {items.mainButton && (
+                    <p onClick={() => setDropdown((prev) => !prev)} className="flex justify-between !w-[300px] !py-4 !px-5 !text-xl !text-white !bg-black uppercase text-center">
+                        {items.mainButton}
+                        <Bars3BottomLeftIcon className="w-8 h-8" />
+                    </p>
+                )}
 
-                    >
+                {items.url && items.submenu ? (
+                    <>
+                        <button type="button" aria-haspopup="menu" className="flex justify-between" aria-expanded={dropdown ? 'true' : 'false'}>
+                            {items.title === 'DropDown' ? items.title : <Link href={items.url} className="text-lg p-0">{items.title}</Link>}
+                            {depthLevel > 0 && window.innerWidth < 960 ? null : depthLevel > 0 && window.innerWidth > 960 ? (
+                                <ChevronRightIcon className="h-5 w-5 text-black" />
+                            ) : (
+                                <ChevronDownIcon className="h-5 w-5" />
+                            )}
+                        </button>
+                        <Dropdown depthLevel={depthLevel} submenus={items.submenu} dropdown={dropdown} />
+                    </>
+                ) : items.submenu ? (
+                    <>
+
+                        {!items.mainButton && <button className="flex justify-around "> {items.title} {!items.mainButton && <ChevronRightIcon className="h-5 w-5  " />} </button>}
+
+                        <Dropdown depthLevel={depthLevel} submenus={items.submenu} dropdown={dropdown} />
+                    </>
+                ) : (
+                    <Link href={items.url} className="hover:!text-black hover:!underline">
                         {items.title}
-                        {depthLevel > 0 ? <ChevronRightIcon className="h-5 w-5 text-black" /> : <ChevronRightIcon className="h-5 w-5" />}
-                    </button>
-                    <Dropdown
-                        depthLevel={depthLevel}
-                        submenus={items.submenu}
-                        dropdown={dropdown}
-                    />
-                </>
-            ) : (
-                <Link href={items.url} className="hover:!text-black hover:!underline">{items.title}</Link>
-            )}
-        </li>
+                    </Link>
+                )}
+            </li>
+        </>
     );
 };
 

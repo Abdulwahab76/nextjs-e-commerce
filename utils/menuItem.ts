@@ -1,16 +1,10 @@
 export const menuItems = [
-
     {
-        title: 'Browse Category',
-        url: '/',
+        mainButton: 'Browse Categories',
         submenu: [
             {
-                title: 'web design',
+                title: 'Summer Essentials',
                 url: 'web-design',
-            },
-            {
-                title: 'web development',
-                url: 'web-dev',
                 submenu: [
                     {
                         title: 'Frontend',
@@ -18,18 +12,16 @@ export const menuItems = [
                     },
                     {
                         title: 'Backend',
-                        submenu: [
-                            {
-                                title: 'NodeJS',
-                                url: 'node',
-                            },
-                            {
-                                title: 'PHP',
-                                url: 'php',
-                            },
-                        ],
+                        url: 'ackend',
+
                     },
                 ],
+            },
+
+            {
+                title: 'web development',
+                url: 'web-dev',
+
             },
             {
                 title: 'SEO',
@@ -37,8 +29,6 @@ export const menuItems = [
             },
         ],
     },
-    {
-        title: 'Summer Essentiall',
-        url: '/services',
-    }
+
+
 ];

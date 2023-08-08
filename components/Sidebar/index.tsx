@@ -7,13 +7,15 @@ import useOutsideClick from "./../../hooks/outsideClick";
 const Sidebar: React.FC<{
     setIsOpened: React.Dispatch<React.SetStateAction<boolean>>;
     isOpened: boolean;
-}> = ({ setIsOpened, isOpened }) => {
+    handleToggleSidebar: () => void
+}> = ({ setIsOpened, isOpened, handleToggleSidebar }) => {
     const wrapperRef = useRef<HTMLDivElement>(null);
     const [showSidebar, setShowSidebar] = useState<boolean>(false);
 
     // Handle outside click to close the sidebar
     useOutsideClick(wrapperRef, () => {
         setShowSidebar(false);
+        setIsOpened(!isOpened)
     });
 
     useEffect(() => {
@@ -21,10 +23,12 @@ const Sidebar: React.FC<{
             setShowSidebar(true);
         } else {
             setShowSidebar(false);
-        }
-    }, [isOpened]);
-    console.log(isOpened, 'isopen===');
 
+        }
+        console.log(isOpened, 'opened useff');
+    }, [isOpened]);
+
+    console.log(isOpened, 'opened');
 
     return (
         <div className={`absolute`}>
@@ -32,9 +36,10 @@ const Sidebar: React.FC<{
             {showSidebar && (
                 <div
                     className={`h-screen w-screen absolute z-20 bg-black/10`}
-                    onClick={() => setShowSidebar(false)}
+                    onClick={() => { setShowSidebar(false) }}
                 ></div>
-            )}
+            )
+            }
 
             <div
                 ref={wrapperRef}
@@ -53,7 +58,6 @@ const Sidebar: React.FC<{
                                 <div className="flex gap-10">
                                     <XMarkIcon
                                         className="md:hidden cursor-pointer text-black flex h-6 w-6 font-extrabold"
-                                    // onClick={() => setIsOpened(false)}
                                     />
 
                                     <MagnifyingGlassIcon className="h-6 w-6 ml-auto text-gray-500 font-extrabold" />
@@ -67,7 +71,7 @@ const Sidebar: React.FC<{
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
