@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Facebook, Whatsapp, Instagram } from "icons/index";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,14 +14,14 @@ import { menuItems } from "utils/menuItem";
 import MenuItems from "@/components/DropDown/menuItems";
 import Sidebar from "@/components/Sidebar";
 
-
 const Navbar = () => {
+  const [isOpened, setisOpened] = useState(false);
+  const [dropDown, setDropDown] = useState(false)
   const [isSearchBar, setIsSearchBar] = useState({
     isMobile: false,
     isSearchShow: false,
   });
 
-  const [isOpened, setisOpened] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,15 +37,22 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+
   const handleToggleSidebar = () => {
-    setisOpened((prevIsOpened) => !prevIsOpened); // Toggle the isOpened state on every click
+    setisOpened(true); // Toggle the isOpened state on every click
   };
 
+  console.log(menuItems, '-==');
 
   return (
     <div className="flex flex-col">
       {isSearchBar.isMobile && isOpened && (
-        <Sidebar isOpened={isOpened} setIsOpened={setisOpened} />
+        <Sidebar
+          isOpened={isOpened}
+          setIsOpened={setisOpened}
+          handleToggleSidebar={handleToggleSidebar}
+        />
       )}
       <div className="upper_nav">
         <div>
@@ -74,8 +81,10 @@ const Navbar = () => {
       </div>
       <nav className={`navbar  `}>
         <div className="flex items-center w-8/12   justify-between gap-6">
-
-          <Bars3Icon onClick={handleToggleSidebar} className="h-10 w-10 md:hidden flex font-extrabold" />
+          <Bars3Icon
+            onClick={handleToggleSidebar}
+            className="h-10 w-10 md:hidden flex font-extrabold"
+          />
 
           <div>
             <Image
@@ -135,16 +144,19 @@ const Navbar = () => {
         {/* <Logo /> */}
       </nav>
       <div className="lower_nav !hidden md:!flex ">
-        <div className="flex gap-10">
-          <ul className="menus">
-            {menuItems.map((menu, index) => {
-              const depthLevel = 0;
-              return (
-                <MenuItems items={menu} key={index} depthLevel={depthLevel} />
-              );
-            })}
-          </ul>
+        <div className="flex gap-10 menus">
           <ul>
+            <li>
+              {menuItems.map((menu, index) => {
+                const depthLevel = 0;
+                return (
+                  <MenuItems items={menu} key={index} depthLevel={depthLevel} />
+                );
+              })}
+            </li>
+
+
+
             <li>
               <Link href="/"> Home</Link>
             </li>
