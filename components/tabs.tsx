@@ -64,7 +64,7 @@ export default function Tabs() {
                 <div className="flex-1">
                     <ul className="text-sm">
                         {activeTabIndex == 1
-                            ? tabsData[activeTabIndex].items.map((item: NavItemProp) => (
+                            ? tabsData[activeTabIndex].items.map((item: any) => (
                                 <>
                                     <li className="rounded-sm text-lg font-medium border-b p-3">
                                         <Link
