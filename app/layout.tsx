@@ -18,7 +18,6 @@ export default function RootLayout({
         <main className="app relative">
           <Navbar />
           {children}
-
         </main>
       </body>
     </html>

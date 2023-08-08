@@ -117,3 +117,24 @@ button span {
 }
 
 /* header */
+
+/* Example styles for the animation */
+.accordion {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.accordion-open {
+    max-height: 200px;
+    /* Set an appropriate value for your submenu's maximum height */
+}
+
+.accordion-content {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.accordion-content-open {
+    opacity: 1;
+}
